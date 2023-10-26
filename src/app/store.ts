@@ -1,13 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import studentInfoReducer from '../pages/studentInfo/Slice';
 import loginReducer from '../pages/login/Slice';
-import homePage from '../pages/home/Slice';
+import studentInfoReducer from '../pages/studentInfo/Slice';
+import homePageReducer from '../pages/home/Slice';
 
 export const store = configureStore({
   reducer: {
     studentInfo: studentInfoReducer,
     loginPage: loginReducer,
-    homePage: homePage,
+    homePage: homePageReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

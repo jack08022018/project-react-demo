@@ -3,26 +3,39 @@ import { Layout, Breadcrumb } from 'antd';
 import { Outlet } from 'react-router-dom';
 import SiderMenu from './SiderMenu';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks';
-import { checkAuthorityAsync } from './Slice';
 import { useEffect } from 'react';
+import axios from 'axios';
+import * as Common from '../../app/CommonUtils';
 
 const { Header, Content, Footer } = Layout;
 
 export default function MainLayout() {
   const location = useLocation();
   const pathname = location.pathname.replace('/', '');
-  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   // init
   useEffect(() => {
     async function init() {
-      const response = await checkAuthorityAsync();
-      console.log("check")
-      console.log(response)
+      try {
+        await axios({
+          method: 'post',
+          url: '/jpa/api/checkAuthority',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+          },
+        });
+      } catch (e) {
+        if(e.response.status === 401) {
+          navigate('/login');
+        }else {
+          Common.handleError(e);
+        }
+      }
     }
     init();
-  }, [dispatch]);
+  }, [navigate]);
 
   return (
     <Layout hasSider>

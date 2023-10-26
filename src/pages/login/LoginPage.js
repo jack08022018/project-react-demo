@@ -5,10 +5,18 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useAppDispatch } from '../../app/hooks';
 import { loginAsync } from './Slice';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  // init
+  useEffect(() => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+  }, [dispatch]);
 
   const login = async (values) => {
     var result = await dispatch(loginAsync(values));

@@ -3,6 +3,7 @@ import { message } from 'antd';
 // const navigate = useNavigate();
 
 export function handleError(e) {
+  console.log(e);
   let msgError = '';
 
   // error before send request

@@ -12,7 +12,6 @@ const initialState = {
 export const loginAsync = createAsyncThunk('student/login',
   async (params, thunkAPI) => {
     try {
-      // console.log(`params: ${JSON.stringify(params)}`);
       const json = await axios({
         method: 'post',
         url: '/jpa/api/login',
@@ -25,8 +24,8 @@ export const loginAsync = createAsyncThunk('student/login',
       let data = json.data.data;
       return data;
     } catch (e) {
-      console.log(e)
       Common.handleError(e);
+      throw e;
     }
   }
 );
@@ -45,6 +44,9 @@ export const Slice = createSlice({
         localStorage.setItem('role', action.payload.roles[0]);
         state.isLoginSuccess = true;
       })
+      .addCase(loginAsync.rejected, (state, action) => {
+        console.log(action.error.message)
+      });
   },
 });
 
