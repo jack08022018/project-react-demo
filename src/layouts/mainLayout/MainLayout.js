@@ -2,17 +2,29 @@ import './Style.css';
 import { Layout, Breadcrumb } from 'antd';
 import { Outlet } from 'react-router-dom';
 import SiderMenu from './SiderMenu';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import { checkAuthorityAsync } from './Slice';
+import { useEffect } from 'react';
 
 const { Header, Content, Footer } = Layout;
 
 export default function MainLayout() {
   const location = useLocation();
   const pathname = location.pathname.replace('/', '');
+  const dispatch = useAppDispatch();
+
+  // init
+  useEffect(() => {
+    async function init() {
+      const response = await checkAuthorityAsync();
+      console.log("check")
+      console.log(response)
+    }
+    init();
+  }, [dispatch]);
 
   return (
-    pathname === 'login' ? <Outlet />
-    :
     <Layout hasSider>
       <SiderMenu />
       <Layout className="site-layout" style={{ marginLeft: 200 }}>

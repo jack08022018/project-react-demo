@@ -14,7 +14,7 @@ export default function LoginPage() {
     var result = await dispatch(loginAsync(values));
     if (result.payload !== undefined) {
       if(result.payload.roles[0] === 'USER') {
-        navigate('/info');
+        navigate('/dancing');
       }
     }
   };

@@ -15,7 +15,7 @@ export const loginAsync = createAsyncThunk('student/login',
       // console.log(`params: ${JSON.stringify(params)}`);
       const json = await axios({
         method: 'post',
-        url: '/api/login',
+        url: '/jpa/api/login',
         data: params,
       });
       // console.log(json.data)

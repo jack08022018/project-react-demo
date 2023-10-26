@@ -20,9 +20,9 @@ export default function SiderMenu() {
   };
 
   const menuItems = [
-    {key: '/', icon: <PieChartOutlined />, label: 'Home'},
-    {key: '/about', icon: <DesktopOutlined />, label: 'About'},
-    {key: '/user', icon: <UserOutlined />, label: 'User'},
+    {key: '/dancing', icon: <PieChartOutlined />, label: 'Home'},
+    {key: '/dancing/about', icon: <DesktopOutlined />, label: 'About'},
+    {key: '/dancing/user', icon: <UserOutlined />, label: 'User'},
   ]
 
   return (

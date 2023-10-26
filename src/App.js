@@ -3,13 +3,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
-import Login from './page/login/LoginPage';
-import StudentInfo from './page/studentInfo/StudentInfoPage';
-import Home from './page/home/HomePage';
+import Login from './pages/login/LoginPage';
+import StudentInfo from './pages/studentInfo/StudentInfoPage';
+import Home from './pages/home/HomePage';
 
 // import Home from './page/Home';
-import About from './page/About';
-import Error from './page/Error';
+import About from './pages/about/About';
+import Error from './pages/error/Error';
 import MainLayout from './layouts/mainLayout/MainLayout';
 
 function App() {
@@ -38,11 +38,13 @@ function App() {
             />
             <Route path='*' element={<Error />} />
           </Route> */}
-          <Route path='/' element={<MainLayout />}>
-            <Route index element={<Home />} />
+          <Route path='/'>
+            <Route index element={<Login />} />
             <Route path='login' element={<Login />} />
-            <Route path='about' element={<About />} />
-
+            <Route path='dancing' element={<MainLayout />}>
+              <Route index element={<Home />} />
+              <Route path='about' element={<About />} />
+            </Route>
             <Route path='*' element={<Error />} />
           </Route>
         </Routes>

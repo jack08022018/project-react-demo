@@ -4,6 +4,7 @@ import {
 } from '@reduxjs/toolkit';
 import * as Common from '../../app/CommonUtils';
 import axios from 'axios';
+import { ExecException } from 'child_process';
 
 const initialState = {
   isLoginSuccess: false
@@ -18,15 +19,16 @@ export const checkAuthorityAsync = createAsyncThunk('student/checkAuthority',
       }
       const json = await axios({
         method: 'post',
-        url: '/student/checkAuthority',
+        url: '/dancing/api/checkAuthority',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
         },
       });
       return '200';
-    } catch (e) {
-      console.log(e)
+    } catch (e: any) {
+      console.log(e);
+      return e.message;
     }
   }
 );
