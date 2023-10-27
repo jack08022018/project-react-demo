@@ -5,7 +5,7 @@ module.exports = function(app) {
     '/jpa',
     createProxyMiddleware({
       // target: 'http://51.79.145.101:9092/dancing',
-      target: 'http://localhost:9193/jpa',
+      target: 'http://localhost:9195/demo',
       changeOrigin: true,
       pathRewrite: {
         [`^/jpa`]: ''

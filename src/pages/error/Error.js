@@ -1,7 +1,7 @@
 const Error = () => {
   return (
-    <section className='section'>
-      <h2>Error</h2>
+    <section justify="center" style={{paddingTop: '30px', textAlign: 'center'}} className='section'>
+      <h2>Error Page not found!</h2>
     </section>
   );
 };

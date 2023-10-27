@@ -1,11 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import loginReducer from '../pages/login/Slice';
-import studentInfoReducer from '../pages/studentInfo/Slice';
 import homePageReducer from '../pages/home/Slice';
 
 export const store = configureStore({
   reducer: {
-    studentInfo: studentInfoReducer,
     loginPage: loginReducer,
     homePage: homePageReducer,
   },

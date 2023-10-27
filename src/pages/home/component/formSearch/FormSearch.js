@@ -44,7 +44,6 @@ function useFormSearch() {
   }
 
   const handleSearch = values => {
-    console.log(values)
     values.pageSize = constants.PAGE_SIZE;
     values.currentPage = 0;
     setSearchParams(values);

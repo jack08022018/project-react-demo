@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import './index.css';
 import { Form, Input, InputNumber, Popconfirm, Table, Typography } from 'antd';
 
 interface Item {
@@ -118,7 +117,8 @@ const App: React.FC = () => {
     {
       title: 'address',
       dataIndex: 'address',
-      width: '40%',
+      // width: '40%',
+      ellipsis: true,
       editable: true,
     },
     {

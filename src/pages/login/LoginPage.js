@@ -22,13 +22,12 @@ export default function LoginPage() {
     var result = await dispatch(loginAsync(values));
     if (result.payload !== undefined) {
       if(result.payload.roles[0] === 'USER') {
-        navigate('/dancing');
+        navigate('/demo');
       }
     }
   };
   
   return (
-    // isLoginSuccess ? navigate('/info') :
     <Row type="flex" justify="center" align="top" style={{minHeight: '100vh', with: '100%', background: 'white', padding: '2px'}}>
       <Card>
         <Form

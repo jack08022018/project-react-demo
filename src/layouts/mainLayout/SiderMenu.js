@@ -1,9 +1,5 @@
 import { Layout, Menu } from 'antd';
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+import { HomeOutlined, DesktopOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 // import './Style.css';
 
@@ -15,14 +11,18 @@ export default function SiderMenu() {
   const pathname = location.pathname;
 
   const handleSiderMenuClick = action => {
-    // console.log(`Current pathname: ${pathname}`);
     navigate(action.key);
   };
 
   const menuItems = [
-    {key: '/dancing', icon: <PieChartOutlined />, label: 'Home'},
-    {key: '/dancing/about', icon: <DesktopOutlined />, label: 'About'},
-    {key: '/dancing/user', icon: <UserOutlined />, label: 'User'},
+    {key: '/demo', icon: <HomeOutlined />, label: 'Home'},
+    {key: '/demo/about', icon: <PieChartOutlined />, label: 'About'},
+    {key: '/demo/user', icon: <UserOutlined />, label: 'User',
+      children: [
+        { key: '/demo/user/history', icon: <DesktopOutlined />, label: 'History' },
+        { key: '/demo/user/team', icon: <DesktopOutlined />, label: 'Team' },
+      ],
+    },
   ]
 
   return (

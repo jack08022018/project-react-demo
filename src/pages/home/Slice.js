@@ -1,7 +1,6 @@
 import { 
   createSlice,
   combineReducers,
-  PayloadAction,
 } from '@reduxjs/toolkit';
 import tableReducer from './component/datatable/Slice';
 import formSearchReducer from './component/formSearch/Slice'

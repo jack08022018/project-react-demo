@@ -1,4 +1,5 @@
 import './Style.css';
+// import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Breadcrumb } from 'antd';
 import { Outlet } from 'react-router-dom';
 import SiderMenu from './SiderMenu';
@@ -11,7 +12,18 @@ const { Header, Content, Footer } = Layout;
 
 export default function MainLayout() {
   const location = useLocation();
-  const pathname = location.pathname.replace('/', '');
+  let pathname = location.pathname.split('/')
+    .filter(s => {
+      return s !== "dancing" && s !== '';
+    })
+    .map(s => {
+      if(s !== '') {
+        return s.charAt(0).toUpperCase() + s.slice(1)
+      }
+      return s;
+    })
+    .join(' > ');
+  pathname = pathname === '' ? 'Home' : pathname;
   const navigate = useNavigate();
 
   // init
@@ -37,13 +49,29 @@ export default function MainLayout() {
     init();
   }, [navigate]);
 
+  const items = [
+    { label: 'item 1', key: 'item-1' }, // remember to pass the key prop
+    { label: 'item 2', key: 'item-2' },
+  ];
+
   return (
     <Layout hasSider>
       <SiderMenu />
       <Layout className="site-layout" style={{ marginLeft: 200 }}>
         <Header style={{ padding: 0, background: 'white', textAlign: 'center' }} >Header</Header>
         <Content style={{ margin: '0 8px' }}>
-          <Breadcrumb items={[{ title: pathname === '' ? 'Home' : pathname }]} />
+          <Breadcrumb items={[{ title: pathname }]} />
+          {/* <Breadcrumb><Breadcrumb.Item menu={{ items }}>Ant Design</Breadcrumb.Item></Breadcrumb>
+          <Breadcrumb>
+            <Breadcrumb.Item href="">
+              <HomeOutlined />
+            </Breadcrumb.Item>
+            <Breadcrumb.Item href="">
+              <UserOutlined />
+              <span>Application List</span>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>Application</Breadcrumb.Item>
+          </Breadcrumb> */}
           <div className="site-layout-background" style={{ padding: 10, minHeight: 360 }}>
             <Outlet />
           </div>

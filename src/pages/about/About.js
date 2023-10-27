@@ -5,7 +5,6 @@ export default function HomePage() {
 
   return (
     <Space direction="vertical" size="small">
-      about!
       <EditableRow />
     </Space>
   );
