@@ -1,5 +1,4 @@
 import './Style.css';
-// import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Breadcrumb } from 'antd';
 import { Outlet } from 'react-router-dom';
 import SiderMenu from './SiderMenu';
@@ -14,7 +13,7 @@ export default function MainLayout() {
   const location = useLocation();
   let pathname = location.pathname.split('/')
     .filter(s => {
-      return s !== "dancing" && s !== '';
+      return s !== 'demo' && s !== '';
     })
     .map(s => {
       if(s !== '') {
@@ -49,10 +48,10 @@ export default function MainLayout() {
     init();
   }, [navigate]);
 
-  const items = [
-    { label: 'item 1', key: 'item-1' }, // remember to pass the key prop
-    { label: 'item 2', key: 'item-2' },
-  ];
+  // const items = [
+  //   { label: 'item 1', key: 'item-1' }, // remember to pass the key prop
+  //   { label: 'item 2', key: 'item-2' },
+  // ];
 
   return (
     <Layout hasSider>
