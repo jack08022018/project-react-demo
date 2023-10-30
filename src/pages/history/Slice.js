@@ -11,6 +11,8 @@ export const Slice = createSlice({
   initialState,
   reducers: {
     incrementCount: (state, action) => {
+      console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+      console.log(`REACT_APP_ENVIRONMENT: ${process.env.REACT_APP_ENVIRONMENT}`);
       state.count = state.count + 1;
     },
   },
