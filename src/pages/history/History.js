@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+// import { useAppDispatch, useAppSelector } from '../../app/hooks';
 // import { incrementCount } from './Slice'
 
 export default class HistoryPage extends Component {

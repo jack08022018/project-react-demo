@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Table } from 'antd';
-import useActionMenu from './ActionMenu';
+// import useActionMenu from './ActionMenu';
 import { useAppSelector } from '../../../../app/hooks';
 import * as constants from './Constants';
 
@@ -13,7 +13,7 @@ function useDataTable({ doPaging }) {
 
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [actionColumnView] = useActionMenu({ selectedRow });
+  // const [actionColumnView] = useActionMenu({ selectedRow });
 
   const hasSelected = selectedRowKeys.length > 0;
 
@@ -30,7 +30,7 @@ function useDataTable({ doPaging }) {
 
   const updatedColumns = [
     ...constants.columns,
-    { title: 'Action', width: 150, align: 'center', render: () => actionColumnView, key: '-1', fixed: 'right' },
+    // { title: 'Action', width: 150, align: 'center', render: () => actionColumnView, key: '-1', fixed: 'right' },
   ];
 
   const handleTableChange = pagination => {
