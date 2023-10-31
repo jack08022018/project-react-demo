@@ -5,7 +5,8 @@ module.exports = function(app) {
     '/jpa',
     createProxyMiddleware({
       // target: 'http://51.79.145.101:9092/dancing',
-      target: 'http://localhost:9195/demo',
+      // target: 'http://localhost:9195/demo',
+      target: process.env.REACT_APP_API_URL,
       changeOrigin: true,
       pathRewrite: {
         [`^/jpa`]: ''
